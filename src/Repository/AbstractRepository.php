@@ -13,8 +13,16 @@ class AbstractRepository
      */
     private $manager;
 
+    /**
+     * @var string
+     */
     protected $entity;
 
+    /**
+     * AbstractRepository constructor.
+     *
+     * @param EntityManagerInterface $manager
+     */
     public function __construct(EntityManagerInterface $manager)
     {
 

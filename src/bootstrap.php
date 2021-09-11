@@ -7,10 +7,16 @@ use App\Exception\NotFoundException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
 
 class bootstrap
 {
+    /**
+     * @param array $server
+     *
+     * @throws NotFoundException
+     */
     public function run(array $server)
     {
         $container = $this->loadContainer();
@@ -32,6 +38,10 @@ class bootstrap
         $controller->$action(...$router->getParameters());
     }
 
+    /**
+     * @return EntityManager
+     * @throws ORMException
+     */
     public function configOrm(): EntityManager
     {
         if ( ! getenv('db_adapter')) {
@@ -39,11 +49,11 @@ class bootstrap
         }
         $path = [__DIR__.'/../src/Models'];
         $params = [
-            'driver' => getenv('db_adapter'),
-            'user' => getenv('db_login'),
+            'driver'   => getenv('db_adapter'),
+            'user'     => getenv('db_login'),
             'password' => getenv('db_password'),
-            'dbname' => getenv('db_name'),
-            'host' => getenv('db_host'),
+            'dbname'   => getenv('db_name'),
+            'host'     => getenv('db_host'),
         ];
 
         $config = Setup::createAnnotationMetadataConfiguration($path,
@@ -52,6 +62,9 @@ class bootstrap
         return EntityManager::create($params, $config);
     }
 
+    /**
+     * @return container
+     */
     private function loadContainer(): container
     {
         $container = new container();
@@ -64,11 +77,15 @@ class bootstrap
         return $container;
     }
 
+    /**
+     *
+     */
     private function loadEnv()
     {
         $path = __DIR__.'/../.env';
         $file = fopen($path, 'r');
-        $params = explode(PHP_EOL, fread($file, filesize($path)));
+        $strfile = fread($file, filesize($path));
+        $params = explode("\n", $strfile);
         foreach ($params as $param) {
             putenv($param);
         }
