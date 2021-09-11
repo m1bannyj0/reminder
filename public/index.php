@@ -12,4 +12,4 @@ set_exception_handler(function ($exception) {
 });
 
 $bootstrap = new bootstrap();
-//$bootstrap->run($_SERVER);
+$bootstrap->run($_SERVER);

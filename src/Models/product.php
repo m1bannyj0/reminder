@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping\Id;
 
 /**
  * Class product
- *
  * @package App\Models
  * @Entity()
  */

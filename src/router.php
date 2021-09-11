@@ -12,7 +12,6 @@ class router
 
     /**
      * router constructor.
-     *
      * @param string $path
      */
     public function __construct(string $path)
@@ -26,7 +25,6 @@ class router
     public function getController(): string
     {
         $controller = ucfirst(strtolower($this->path[0]));
-
         return "{$controller}Controller";
     }
 

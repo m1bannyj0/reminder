@@ -14,7 +14,6 @@ class AbstractController
 
     /**
      * AbstractController constructor.
-     *
      * @param Request $request
      */
     protected function setRequest(Request $request)

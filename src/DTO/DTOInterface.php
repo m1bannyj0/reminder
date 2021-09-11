@@ -1,5 +1,4 @@
 <?php
-
 namespace App\DTO;
 
 use App\Services\DTOHelpers;

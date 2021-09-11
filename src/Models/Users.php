@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace App\Models;
 
 use Doctrine\ORM\Mapping\Column;
@@ -11,9 +10,9 @@ use Doctrine\ORM\Mapping\Table;
 
 /**
  * @Entity()
- * @Table(name="`user`")
+ * @Table(name="users")
  */
-class User
+class Users
 {
     /**
      * @Id

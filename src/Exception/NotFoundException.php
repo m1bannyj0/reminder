@@ -3,8 +3,6 @@
 namespace App\Exception;
 
 
-use Exception;
-
-class NotFoundException extends Exception
+class NotFoundException extends \Exception
 {
 }

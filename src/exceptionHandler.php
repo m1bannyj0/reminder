@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace App;
 
 class exceptionHandler
@@ -12,7 +11,6 @@ class exceptionHandler
 
     /**
      * exceptionHandler constructor.
-     *
      * @param $exception
      */
     public function __construct($exception)

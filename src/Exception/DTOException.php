@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Exception;
 
-use Exception;
-
-class DTOException extends Exception
+class DTOException extends \Exception
 {
 
 }
